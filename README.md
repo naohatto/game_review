@@ -1,24 +1,26 @@
-# README
+# <game_review>
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## サイト概要
+### サイトテーマ
+<ゲームのレビューサイト>
 
-Things you may want to cover:
+### テーマを選んだ理由
+<前職の経験から、人々のニーズを知りたいという目的と、自分の中で関心が大きいゲームというテーマを組み合わせたため>
 
-* Ruby version
+### ターゲットユーザ
+<これからゲームを買おうという人、すでにプレイ済みでやったゲームの感想を伝えたい人>
 
-* System dependencies
+### 主な利用シーン
+<新しく出たばかりのゲームや話題になったゲームなど、やってみたいが不安な人などがそのゲームのレビューなどを見ることができ、購買促進に貢献できる>
 
-* Configuration
 
-* Database creation
+## 開発環境
+- OS：Linux(CentOS)
+- 言語：HTML,CSS,JavaScript,Ruby,SQL
+- フレームワーク：Ruby on Rails
+- JSライブラリ：jQuery
+- IDE：Cloud9
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## 使用素材
+- 外部サービスの画像素材・音声素材を使用した場合は、必ずサービス名とURLを明記してください。
+- 使用しない場合は、使用素材の項目をREADMEから削除してください。
