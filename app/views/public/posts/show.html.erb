@@ -1,2 +1,35 @@
-<h1>Public::Posts#show</h1>
-<p>Find me in app/views/public/posts/show.html.erb</p>
+<main>
+  <%= flash[:create] %>
+  <%= flash[:updateb] %>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 offset-md-1">
+        <h2>Review detail</h2>
+        <table class="table">
+          <tbody>
+            <tr>
+              <td>
+                <%= link_to customer_path(@post.customer.id) do %>
+                  <%= image_tag @post.customer.get_profile_image(100,100) %></p>
+                  <%= @post.customer.name %>
+                <% end %>
+              </td>
+              <td>
+                <%= link_to post_path(@post) do %>
+                  <%= @post.title %>
+                <% end %>
+              </td>
+              <td>
+                <%= @post.body %>
+              </td>
+              <% if @post.customer == current_customer %>
+              <td><div class="btn btn-success"><%= link_to "Edit", edit_post_path(@post.id.to_s) %></div></td>
+              <td><div class="btn btn-danger"><%= link_to "Destroy", post_path(@post), method: :delete %></div></td>
+              <% end %>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</main>

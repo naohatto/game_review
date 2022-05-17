@@ -1,2 +1,37 @@
-<h1>Public::Posts#index</h1>
-<p>Find me in app/views/public/posts/index.html.erb</p>
+<main>
+  <div class="container px-5 px-sm-0">
+    <div class="row">
+      <div class="col-md-8 offset-md-1">
+        <h2>Reviews</h2>
+        <table class="table table-hover table-inverse">
+          <thead>
+            <tr>
+              <th></th>
+              <th>Title</th>
+              <th>Review</th>
+              <th colspan="3"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @posts.each do |review| %>
+            <tr>
+              <td>
+                <%= link_to customer_path(review.customer.id) do %>
+                　<%= image_tag review.customer.get_profile_image(100,100) %>
+              　<% end %>
+              </td>
+              <td>
+                <%= link_to post_path(review.id) do %>
+                  <%= review.title %>
+                <% end %>
+              </td>
+              <td><%= review.body %></td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+        <%= paginate @posts %>
+      </div>
+    </div>
+  </div>
+</main>
