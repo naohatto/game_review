@@ -1,12 +1,12 @@
 <div class="col-md-3">
   <h2>User info</h2>
-  <div class="img"><%= image_tag user.get_profile_image(100,100) %></div>
+  <div class="img"><%= image_tag customer.get_profile_image(100,100) %></div>
   <table class="table">
     <tbody>
       <tr></tr>
       <tr>
         <th>name</th>
-        <th><%= customerr.name %></th>
+        <th><%= customer.name %></th>
       </tr>
       <tr>
     	  <th>The number of reviews</th>
@@ -14,4 +14,11 @@
       </tr>
     </tbody>
   </table>
+  <div class="col-md-3">
+    <li>
+      <%= link_to(edit_customer_path(customer), class:"btn btn-outline-secondary btn-block") do %>
+        <i class="fas fa-user-cog"></i>
+      <% end %>
+    </li>
+  </div>
 </div>

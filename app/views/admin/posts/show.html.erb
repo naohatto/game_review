@@ -3,6 +3,7 @@
   <%= flash[:updateb] %>
   <div class="container">
     <div class="row">
+      <%= render 'layouts/customerinfo', ipost: @post, customer: @customer %>
       <div class="col-md-8 offset-md-1">
         <h2>Review detail</h2>
         <table class="table">

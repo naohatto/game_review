@@ -7,7 +7,7 @@ class Public::PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.customer_id = current_customer.id
     if @post.save
-      flash[:create] = "You have created book successfully."
+      flash[:create] = "You have created review successfully."
       redirect_to post_path(@post.id)
     else
       @customer = current_customer
@@ -23,6 +23,8 @@ class Public::PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+    @post_comment = PostComment.new
+    @customer = @post.customer
   end
 
 
@@ -49,6 +51,9 @@ class Public::PostsController < ApplicationController
 
 
   def destroy
+    @post = Post.find(params[:id])
+    @post.destroy
+    redirect_to customer_path(current_customer)
   end
 
   private

@@ -18,12 +18,14 @@ Rails.application.routes.draw do
 
   scope module: :public do
     root to: "homes#top"
-    resources :post_comments, only: [:create, :destroy]
-    resources :posts
+    resources :posts do
+      resources :post_comments, only: [:create, :destroy]
+    end
     resources :customers, only: [:show, :edit, :update]
     get 'customers/unsubscribe'
     get 'customers/withdraw'
     get 'homes/about'
+    get "search" => "searches#search"
   end
 
 

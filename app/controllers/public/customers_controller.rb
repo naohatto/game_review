@@ -12,7 +12,7 @@ class Public::CustomersController < ApplicationController
     @customer = current_customer
     if @customer.update(customer_params)
       flash[:update] = 'You have updated customer successfully.'
-      redirect_to customers_path(@customer.id)
+      redirect_to customer_path(@customer.id)
     else
       render :edit
     end
@@ -24,10 +24,10 @@ class Public::CustomersController < ApplicationController
   def withdraw
   end
 
-private
+  private
 
   def customer_params
-    params.require(:customer).permit(:name, :is_deleted)
+    params.require(:customer).permit(:profile_image, :name, :is_deleted)
   end
 
 end
