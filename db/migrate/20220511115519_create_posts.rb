@@ -5,7 +5,7 @@ class CreatePosts < ActiveRecord::Migration[6.1]
       t.integer :genre_id
       t.string :title
       t.text :body
-      t.float :rate
+      t.float :rate, null: false
 
       t.timestamps
     end

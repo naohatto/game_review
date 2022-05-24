@@ -25,7 +25,7 @@
                 <% else %>
                   <%= link_to '退会', admin_customer_path(customer.id, post: {is_deleted: true}), method: :put, class: 'btn btn-success' %>
                 <% end %>
-                <%= hidden_field_tag :name, customer.name %>
+
               </td>
             </tr>
             <% end %>

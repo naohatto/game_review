@@ -1,4 +1,7 @@
 class Public::CustomersController < ApplicationController
+  before_action :authenticate_customer!
+  #before_action :set_current_customer
+
   def show
     @customer = Customer.find(params[:id])
     @posts = @customer.posts.page(params[:page])
@@ -26,8 +29,12 @@ class Public::CustomersController < ApplicationController
 
   private
 
-  def customer_params
-    params.require(:customer).permit(:profile_image, :name, :is_deleted)
+  def set_current_customer
+    @customer = current_customer
   end
+
+  #def customer_params
+    #params.require(:customer).permit(:profile_image, :name, :is_deleted)
+  #end
 
 end

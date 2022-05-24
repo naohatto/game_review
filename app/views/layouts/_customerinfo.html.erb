@@ -10,15 +10,15 @@
       </tr>
       <tr>
     	  <th>The number of reviews</th>
-    	  <th></th>
+    	  <th><%= customer.posts.count %></th>
       </tr>
     </tbody>
   </table>
-  <div class="col-md-3">
-    <li>
+  <div class="col">
+    <div>
       <%= link_to(edit_customer_path(customer), class:"btn btn-outline-secondary btn-block") do %>
         <i class="fas fa-user-cog"></i>
       <% end %>
-    </li>
+    </div>
   </div>
 </div>

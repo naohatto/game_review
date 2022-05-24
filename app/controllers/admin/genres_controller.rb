@@ -1,5 +1,6 @@
 class Admin::GenresController < ApplicationController
-  before_action :authenticate_admin!, only: [:edit, :update]
+  before_action :authenticate_admin!
+  before_action :ensure_genre, only: [:edit, :update]
   def index
     @genres = Genre.all
     @genre = Genre.new
@@ -34,5 +35,9 @@ class Admin::GenresController < ApplicationController
 
   def genre_params
     params.require(:genre).permit(:post_id, :name)
+  end
+
+  def ensure_genre
+    @genre = Genre.find(params[:id])
   end
 end
