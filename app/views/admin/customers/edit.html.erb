@@ -1,2 +1,16 @@
-<h1>Admin::Customers#edit</h1>
-<p>Find me in app/views/admin/customers/edit.html.erb</p>
+<main>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+        <h3><%= @customer.name %>さんの会員情報編集</h3>
+          <div>会員ID</div><div><%= @customer.id %></div>
+          <div class="form-group mr-3">氏名<%= @customer.name %></div>
+          <div class="form-group mr-3">メールアドレス<%= @customer.email %></div>
+        <%= form_with model: @customer, url: admin_customer_path(@customer) do |f| %>
+          <div class="form-group mr-3">会員ステータス<%= f.radio_button :is_deleted, "false" %><%= f.label :is_deleted, "有効" %><%= f.radio_button :is_deleted, "true" %><%= f.label :is_deleted, "退会" %></div>
+          <div class="form-group mr-3"><%= f.submit "変更を保存", class: "btn btn-success" %></div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</main>

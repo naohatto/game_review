@@ -1,12 +1,12 @@
 Rails.application.routes.draw do
 
+  devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
+    sessions: "admin/sessions"
+  }
+
   devise_for :customers,skip: [:passwords], controllers: {
     registrations: "public/registrations",
     sessions: 'public/sessions'
-  }
-
-  devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
-    sessions: "admin/sessions"
   }
 
   namespace :admin do
@@ -21,9 +21,9 @@ Rails.application.routes.draw do
     resources :posts do
       resources :post_comments, only: [:create, :destroy]
     end
-    resources :customers, only: [:show, :edit, :update]
     get 'customers/unsubscribe'
-    get 'customers/withdraw'
+    patch 'customers/withdraw'
+    resources :customers, only: [:show, :edit, :update]
     get 'homes/about'
     get "search" => "searches#search"
   end

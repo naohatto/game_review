@@ -1,6 +1,6 @@
 class Public::CustomersController < ApplicationController
   before_action :authenticate_customer!
-  #before_action :set_current_customer
+  before_action :set_current_customer
 
   def show
     @customer = Customer.find(params[:id])
@@ -25,6 +25,9 @@ class Public::CustomersController < ApplicationController
   end
 
   def withdraw
+    @customer.update(is_deleted: true)
+    reset_session
+    redirect_to root_path
   end
 
   private
@@ -33,8 +36,8 @@ class Public::CustomersController < ApplicationController
     @customer = current_customer
   end
 
-  #def customer_params
-    #params.require(:customer).permit(:profile_image, :name, :is_deleted)
-  #end
+  def customer_params
+    params.require(:customer).permit(:profile_image, :name, :email, :is_deleted)
+  end
 
 end
