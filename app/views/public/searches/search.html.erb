@@ -6,7 +6,11 @@
     <tbody>
       <% @customers.each do |customer| %>
         <tr>
-          <td><%= customer.name %></td>
+          <td>
+            <%= link_to customer_path(customer.id) do %>
+              <%= customer.name %>
+            <% end %>
+          </td>
         </tr>
       <% end %>
     </tbody>
@@ -15,7 +19,16 @@
     <tbody>
       <% @posts.each do |spost| %>
         <tr>
-          <td><%= spost.title %></td>
+          <td>
+            <%= link_to customer_path(spost.customer.id) do %>
+              <%= spost.customer.name %>
+            <% end %>
+          </td>
+          <td>
+            <%= link_to post_path(spost.id) do %>
+              <%= spost.title %>
+            <% end %>
+          </td>
           <td><%= spost.body %></td>
         </tr>
       <% end %>

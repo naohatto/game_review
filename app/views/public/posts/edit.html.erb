@@ -1,24 +1,28 @@
-<%= flash[:errorudb] %>
-<h1>Editing Review</h1>
+<main>
+  <div class="container">
+    <div class="row">
+      <div class="col">
+      <%= flash[:errorudb] %>
+      <h1>Editing Review</h1>
 
-<%= form_with model: @post, url: post_path(@post.id), method: :patch do |f| %>
+      <%= form_with model: @post, url: post_path(@post.id), method: :patch do |f| %>
 
-  <div class="form-group">
-    <label for="post_title">Title</label>
-    <%= f.text_field :title, placeholder: "Title", class: 'form-control title' %>
-  </div>
-  <div class="form-group">
-    <label for="post_review">Review</label>
-    <%= f.text_area :body, placeholder: "Title", class: 'form-control review' %>
-  </div>
+        <div class="form-group">
+          <label for="post_title">Title</label>
+          <%= f.text_field :title, placeholder: "Title", class: 'form-control title' %>
+        </div>
+        <div class="form-group">
+          <label for="post_review">Review</label>
+          <%= f.text_area :body, placeholder: "Title", class: 'form-control review' %>
+        </div>
 
-  <div class="form-group row" id="star">
+        <div class="form-group row" id="star">
           <label for="post_rate">Rate</label>
           <%= f.hidden_field :rate, id: :review_star %>
         </div>
-
         <!-- 評価javascript -->
         <script>
+        $('#star').empty();
         $('#star').raty({
           size     : 36,
           starOff:  '<%= asset_path('star-off.png') %>',
@@ -29,14 +33,20 @@
         });
         </script>
 
-  <div class="form-group">
-    <label for="item_genre">ジャンル</label>
-    <%= f.select :genre_id, options_from_collection_for_select(Genre.all, :id, :name) %>
+        <div class="form-group">
+          <label for="item_genre">ジャンル</label>
+          <%= f.select :genre_id, options_from_collection_for_select(Genre.all, :id, :name) %>
+        </div>
+
+        <%= f.submit '更新' %>
+
+      <% end %>
+        <div class="mt-2">
+          <%= link_to "レビュー詳細へ", post_path(@post.id), class:"btn btn-outline-info" %>
+           |
+          <%= link_to "レビュー一覧へ", posts_path, class:"btn btn-outline-secondary" %>
+        </div>
+      </div>
+    </div>
   </div>
-
-  <%= f.submit 'Update Review' %>
-
-<% end %>
-<%= link_to "Show", post_path(@post.id) %>
- |
-<%= link_to "Back", posts_path %>
+</main>

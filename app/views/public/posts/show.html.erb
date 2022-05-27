@@ -5,7 +5,7 @@
     <div class="row">
       <%= render 'layouts/customerinfo', ipost: @post, customer: @customer %>
       <div class="col-md-8 offset-md-1">
-        <h2>Review detail</h2>
+        <h2>レビュー詳細</h2>
         <table class="table">
           <tbody>
             <tr>
@@ -26,6 +26,7 @@
               <td>
                 <div id="star-rate-<%= @post.id %>"></div>
                   <script>
+                  $('#star-rate-<%= @post.id %>').empty();
                   $('#star-rate-<%= @post.id %>').raty({
                     size: 36,
                     starOff:  '<%= asset_path('star-off.png') %>',
@@ -38,23 +39,36 @@
                   </script>
               </td>
               <% if @post.customer == current_customer %>
-              <td><div class="btn btn-success"><%= link_to "Edit", edit_post_path(@post.id.to_s) %></div></td>
-              <td><div class="btn btn-danger"><%= link_to "Destroy", post_path(@post), method: :delete %></div></td>
+              <td><div class="btn btn-success"><%= link_to "編集", edit_post_path(@post.id.to_s) %></div></td>
+              <td><div class="btn btn-danger"><%= link_to "削除", post_path(@post), method: :delete %></div></td>
               <% end %>
             </tr>
           </tbody>
         </table>
       </div>
       <div class="col-md-8 offset-md-1">
-        <p>コメント件数：<%= @post.post_comments.count %></p>
-        <% @post.post_comments.each do |post_comment| %>
-          <p><%= image_tag post_comment.customer.get_profile_image(100,100) %></p>
-          <%= post_comment.customer.name %>
-          <%= post_comment.created_at.strftime('%Y/%m/%d') %><%= post_comment.body %>
-          <% if post_comment.customer == current_customer %>
-            <%= link_to "削除", post_post_comment_path(post_comment.post, post_comment), method: :delete %>
-          <% end %>
-        <% end %>
+        <div>コメント件数：<%= @post.post_comments.count %></div>
+        <table>
+          <tbody>
+            <% @post.post_comments.each do |post_comment| %>
+            <tr>
+              <td>
+                <%= image_tag post_comment.customer.get_profile_image(50,50) %>
+                <%= post_comment.customer.name %>
+                <%= post_comment.created_at.strftime('%Y/%m/%d') %>
+              </td>
+              <td>
+                <%= post_comment.body %>
+              </td>
+              <td>
+                <% if post_comment.customer == current_customer %>
+                  <%= link_to "削除", post_post_comment_path(post_comment.post, post_comment), method: :delete %>
+                <% end %>
+              </td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
       </div>
       <div>
         <%= form_with model: [@post, @post_comment] do |f| %>

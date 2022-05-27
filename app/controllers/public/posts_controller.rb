@@ -1,6 +1,6 @@
 class Public::PostsController < ApplicationController
   before_action :authenticate_customer!
-  #before_action :ensure_posts, only: [:new, :edit, :create, :update, :destroy]
+  before_action :set_current_customer
 
 
   def new
@@ -51,9 +51,6 @@ class Public::PostsController < ApplicationController
     end
   end
 
-
-
-
   def destroy
     @post = Post.find(params[:id])
     @post.destroy
@@ -62,13 +59,12 @@ class Public::PostsController < ApplicationController
 
   private
 
+  def set_current_customer
+    @customer = current_customer
+  end
+
   def post_params
     params.require(:post).permit(:title, :body, :genre_id, :rate, :customer_id)
   end
-
-  #def ensure_posts
-
-  #end
-
 
 end

@@ -4,21 +4,22 @@
       <div class="col">
       <%= form_with model: @post do |f| %>
         <div class="form-group">
-          <label for="post_title">Title</label>
-          <%= f.text_field :title, placeholder: "Title", class: 'form-control title' %>
+          <label for="post_title">タイトル</label>
+          <%= f.text_field :title, placeholder: "タイトル", class: 'form-control title' %>
         </div>
         <div class="form-group">
-          <label for="post_review">Review</label>
-          <%= f.text_area :body, placeholder: "Title", class: 'form-control review' %>
+          <label for="post_review">レビュー</label>
+          <%= f.text_area :body, placeholder: "レビュー内容", class: 'form-control review' %>
         </div>
-
+        評価
         <div class="form-group row" id="star">
-          <label for="post_rate">Rate</label>
+          <label for="post_rate">評価</label>
           <%= f.hidden_field :rate, id: :review_star %>
         </div>
 
         <!-- 評価javascript -->
         <script>
+        $('#star').empty();
         $('#star').raty({
           size     : 36,
           starOff:  '<%= asset_path('star-off.png') %>',
