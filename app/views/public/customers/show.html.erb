@@ -36,6 +36,7 @@
               <td>
                 <div id="star-rate-<%= cpost.id %>"></div>
                   <script>
+                  $('#star-rate-<%= cpost.id %>').empty();
                   $('#star-rate-<%= cpost.id %>').raty({
                     size: 36,
                     starOff:  '<%= asset_path('star-off.png') %>',
