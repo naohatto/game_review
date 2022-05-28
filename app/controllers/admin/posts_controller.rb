@@ -16,7 +16,7 @@ class Admin::PostsController < ApplicationController
   def destroy
     @post = Post.find(params[:id])
     @post.destroy
-    redirect_to admin_customer_path(current_customer)
+    redirect_to admin_customer_path(current_admin)
   end
 
   private

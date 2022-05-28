@@ -54,7 +54,7 @@ class Public::PostsController < ApplicationController
   def destroy
     @post = Post.find(params[:id])
     @post.destroy
-    redirect_to customer_path(current_customer)
+    redirect_to customer_path(@post.customer)
   end
 
   private
