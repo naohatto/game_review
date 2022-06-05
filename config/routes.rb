@@ -21,8 +21,17 @@ Rails.application.routes.draw do
     resources :posts do
       resources :post_comments, only: [:create, :destroy]
     end
-    get 'customers/unsubscribe'
-    patch 'customers/withdraw'
+
+    #get 'customers/unsubscribe'
+    #patch 'customers/withdraw'
+
+    resources :customers, only: [:show, :edit, :update] do
+      collection do
+        get 'unsubscribe'
+        patch 'withdraw'
+      end
+    end
+
     resources :customers, only: [:show, :edit, :update]
     get 'homes/about'
     get "search" => "searches#search"
