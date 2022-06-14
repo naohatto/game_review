@@ -8,7 +8,7 @@
           <div class="form-group mr-3">メールアドレス <%= @customer.email %></div>
         <%= form_with model: @customer, url: admin_customer_path(@customer) do |f| %>
           <div class="form-group mr-3">会員ステータス <%= f.radio_button :is_deleted, "false" %><%= f.label :is_deleted, "有効" %><%= f.radio_button :is_deleted, "true" %><%= f.label :is_deleted, "退会" %></div>
-          <div class="form-group mr-3"><%= f.submit "変更を保存", class: "btn btn-success" %></div>
+          <div class="form-group mr-3"><%= f.submit "変更を保存", class: "btn btn-primary" %></div>
         <% end %>
       </div>
     </div>
