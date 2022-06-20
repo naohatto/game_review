@@ -12,22 +12,22 @@
           <%= f.submit "新規登録", class: 'btn btn-success' %>
         </div>
       <% end %>
-      <% @genres.each do |genre| %>
-        <table class="table table-hover table-inverse">
-          <thead>
-            <tr>ジャンル</tr>
-            <tr colspan="2"></tr>
-          </thead>
-          <tbody>
-            <td>
-              <%= genre.name %>
-            </td>
-            <td>
-              <%= link_to "編集する", edit_admin_genre_path(genre.id), class: 'btn btn-success' %>
-            </td>
-          </tbody>
-        </table>
-      <% end %>
+      <table class="table table-hover table-inverse">
+        <thead>
+          <tr>ジャンル</tr>
+          <tr colspan="2"></tr>
+        </thead>
+        <% @genres.each do |genre| %>
+        <tbody>
+          <td>
+            <%= genre.name %>
+          </td>
+          <td>
+            <%= link_to "編集する", edit_admin_genre_path(genre.id), class: 'btn btn-success' %>
+          </td>
+        </tbody>
+        <% end %>
+      </table>
     </div>
   </div>
 </div>
