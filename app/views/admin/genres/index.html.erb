@@ -9,7 +9,7 @@
           <%= f.text_field :name, autofocus: true, id: "genre_name", placeholder: "ジャンル名", class: "form-control name" %>
         </div>
         <div class="form-inline mr-2">
-          <%= f.submit "新規登録", class: 'btn btn-outline-success' %>
+          <%= f.submit "新規登録", class: 'btn btn-primary' %>
         </div>
       <% end %>
       <table class="table table-hover table-inverse">
@@ -23,7 +23,7 @@
             <%= genre.name %>
           </td>
           <td>
-            <%= link_to "編集する", edit_admin_genre_path(genre.id), class: 'btn btn-outline-danger' %>
+            <%= link_to "編集する", edit_admin_genre_path(genre.id), class: 'btn btn-danger' %>
           </td>
         </tbody>
         <% end %>
