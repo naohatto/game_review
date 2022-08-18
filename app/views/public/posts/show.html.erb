@@ -62,7 +62,7 @@
               </td>
               <td>
                 <% if post_comment.customer == current_customer %>
-                  <div class="btn btn-danger">
+                  <div class="btn btn-outline-danger">
                     <%= link_to "削除", post_post_comment_path(post_comment.post, post_comment), method: :delete %>
                   </div>
                 <% end %>
